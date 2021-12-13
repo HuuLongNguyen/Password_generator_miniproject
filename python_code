@@ -1,0 +1,41 @@
+import random
+import array 
+# Author: Nguyen Huu Long
+# CreateDate: Dec-2021
+# Description: Make a random password with input length and seperate from the begin
+
+
+# Nhap do dai ki tu
+length_pass = int(input("Nhap do dai ki tu: "))
+# Tao cac ki tu
+digits = ['0','1','2','3','4','5','6','7','8','9','0']
+symbols = ['!','@','#','$','%','^','&','*','(',')','_','<','>']
+lowcase_char = ['a','b','c','d','e','f','g','h','i']
+upcase_char = ['A','B','C','D','E','F','H','G','I']
+# combine all the char arrays above to form one array 
+combine_list = digits + symbols + lowcase_char + upcase_char
+
+# Chọn random trong các nhóm 
+rand_digit = random.choice(digits)
+rand_symbols = random.choice(symbols)
+rand_lower = random.choice(lowcase_char)
+rand_upper = random.choice(upcase_char)
+# Combine the character randomly
+temp_pass = rand_digit + rand_symbols + rand_lower + rand_upper
+
+# List of the character with the length select
+for x in range(length_pass - 4):
+    temp_pass = temp_pass + random.choice(combine_list)
+
+# Make a seperated password
+temp_pass_list = array.array('u', temp_pass)
+random.shuffle(temp_pass_list)
+
+# Form the password
+password = ""
+for x in temp_pass_list:
+    password = password + x
+
+# Print out the password
+
+print(password)
